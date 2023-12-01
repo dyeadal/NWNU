@@ -5,8 +5,6 @@ Work in progress, still testing ba cautious running unfinished scripts on your m
 
 ## Install
 
-How to Install Script:
-
 Download repository
 
 `git pull https://github.com/dyeadal/NWNU`
