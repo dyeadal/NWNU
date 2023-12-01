@@ -7,14 +7,13 @@ Work in progress, still testing ba cautious running unfinished scripts on your m
 
 How to Install Script:
 1) Download repository
+  `git pull https://github.com/dyeadal/NWNU`
 
- `git pull https://github.com/dyeadal/NWNU`
-
-3) Change directory into script's directory
+2) Change directory into script's directory
 
 `cd NWNU`
 
-4) Run script as privileged user
+3) Run script as privileged user
 
 `sudo ./script.sh`
 
