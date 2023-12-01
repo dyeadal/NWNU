@@ -31,7 +31,7 @@ installScript() {
   read -p "Reboot on which hour? (0-23): " hour
 
   # add cron entry
-  cron_task = 0 $hour * * $day 0 $HOME/.scripts/$scriptfile
+  cron_task = "0 $hour * * $day 0 $HOME/.scripts/$scriptfile"
   (crontab -l ; echo "$crontask") | crontab
 }
 
