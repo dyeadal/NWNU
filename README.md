@@ -1,5 +1,7 @@
 # NWNU
-New week, new uptime! BASH script to install cronjob to restart GNULinux server weekly.
+New week, new uptime! 
+
+BASH script to install weekly reboot scheduled task on GNU Linux systems.
 
 ⚠ Work in progress, still testing. Take caution running unfinished scripts on your machine(s).
 
