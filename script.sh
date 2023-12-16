@@ -11,16 +11,21 @@ testScript() {
     [yY])
       echo "Rebooting"
       ./weekly_reboot.sh
+      ;;
     [nN])
       echo "Not rebooting"
       # prompt to install script to cronjob
       read -p "Install script on system? (y/n)" installInput
       case "$installInput" in
+      
         [yY])
           installScript
+          ;;
         [nN])
           echo "Exiting script"
+          ;;
         esac
+      ;;
   esac    
 }
 
@@ -49,10 +54,11 @@ installScript() {
 createDir() {
   # if directory does not exist then
   if [ -d "~/.scripts" ]; then 
-  #creates .scripts directory on the running users home profile
-  mkdir $HOME/.scripts
-  # copy scriptfile to .scripts/ in user's home directory
-  cp $scriptfile $HOME/.scripts/
+    #creates .scripts directory on the running users home profile
+    mkdir $HOME/.scripts
+    # copy scriptfile to .scripts/ in user's home directory
+    cp $scriptfile $HOME/.scripts/
+  fi
 }
 
 # checks if file exists, if not it creates it, also prompts if admin wants to test script
