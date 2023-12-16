@@ -32,7 +32,8 @@ testScript() {
 #function to create the script
 createScript(){
   # create the script
-    echo "/sbin/reboot" > weekly_reboot.sh
+    echo "Creating reboot script"
+    echo "reboot" > $scriptFile
     chmod +x weekly_reboot.sh
 }
 
@@ -61,15 +62,29 @@ createDir() {
   fi
 }
 
-# checks if file exists, if not it creates it, also prompts if admin wants to test script
-while true; do 
-  # if script file exists
+scriptExists(){
   if [ -e $scriptFile ]; then 
-    # invoke testScript function
-    testScript
-  # if script file does NOT exist
+    return 0
   else 
-    # inovke createScript function
-    createScript
+    return 1
   fi
-done
+}
+
+startMenu(){
+  echo ""
+  echo "1) Create reboot script"
+  echo "2) Test adding reboot job"
+  echo "3) Install reboot job"
+  echo "4) Remove reboot job"
+  echo ""
+
+  
+
+  if scriptExists; then
+    echo "Script: created"
+  else
+    echo "Script: not found"
+  fi
+}
+
+startMenu
