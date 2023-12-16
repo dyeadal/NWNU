@@ -35,6 +35,7 @@ installScript() {
   (crontab -l ; echo "$crontask") | crontab
 }
 
+# function to create directory
 createDir() {
   if [ -d "~/.scripts" ]; then 
   #creates .scripts directory on executing users home profile
