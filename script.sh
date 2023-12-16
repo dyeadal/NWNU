@@ -72,3 +72,4 @@ while true; do
     # inovke createScript function
     createScript
   fi
+done
