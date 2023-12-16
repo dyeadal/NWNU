@@ -43,6 +43,11 @@ createDir() {
   cp $scriptfile $HOME/.scripts/
 }
 
+# function to remove cron job
+removeJob(){
+  # code
+}
+
 # checks if file exists, if not it creates it, also prompts if admin wants to test script
 while true; do 
   if [ -e $scriptFile ]; then # file exists
