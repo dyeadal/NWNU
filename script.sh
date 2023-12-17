@@ -21,7 +21,6 @@ testScript() {
       # prompt to install script to cronjob
       read -p "Install script on system? (y/n)" installInput
       case "$installInput" in
-      
         [yY])
           installScript
           ;;
@@ -88,10 +87,27 @@ startMenu(){
   
 
   if scriptExists; then
-    echo -e "${greenText}Script: created${resetText}"
+    echo -e "                   ${greenText}Script: created${resetText}"
   else
-    echo -e "${redText}Script: not found${resetText}"
+    echo -e "                   ${redText}Script: not found${resetText}"
   fi
+
+  read -p "Option: " optionInput
+
+  case "$optionInput" in
+    [1])
+      echo "1"
+      ;;
+    [2])
+      echo "2"
+      ;;
+    [3])
+      echo "3"
+      ;;
+    [4])
+      echo "4"
+      ;;
+  esac
 }
 
 startMenu
