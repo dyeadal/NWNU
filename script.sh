@@ -3,6 +3,7 @@
 # variable for BASH script file name
 scriptFile="weekly_reboot.sh"
 
+# variable text color code
 resetText='\033[0m'
 greenText='\033[0;32m'
 redText='\033[0;31m'
@@ -10,10 +11,11 @@ redText='\033[0;31m'
 # function to prompt admin if they want to test reboot script before moving file to cron directory
 testScript() {
   # prompt to test reboot script
-  read -p "Test reboot script before installing on system? (y/n)" testInput
+  echo -e "${redText}Save work if testing, will reboot system and will lose unsaved work${resetText}"
+  read -p "Test reboot script before creating cron job? (y/n)" testInput
   case "$testInput" in
     [yY])
-      echo "Rebooting"
+      echo "Running reboot script"
       ./weekly_reboot.sh
       ;;
     [nN])
@@ -38,6 +40,7 @@ createScript(){
     echo "Creating reboot script"
     echo "reboot" > $scriptFile
     chmod +x weekly_reboot.sh
+    testScript
 }
 
 # function to install script
@@ -65,49 +68,49 @@ createDir() {
   fi
 }
 
+# function to remove cron job
+removeCronJob(){
+  echo "Placeholder: removing cron job"
+}
+
+# function to remove script file
+removeScriptFile(){
+  echo "Placeholder: removing script file"
+}
+
+#function to check if script file exists, returns 0 or 1
 scriptExists(){
+  # if exists
   if [ -e $scriptFile ]; then 
     return 0
+
+  # NOT exists
   else 
     return 1
   fi
 }
 
 startMenu(){
+  # user menu CLI 
+  clear
   echo -e "${greenText}      New Week, New Uptime (NWNU)${resetText}"
   echo "Schedule Weekly Reboot cron jobs easily"
   echo ""
   echo ""
   echo "1) Create reboot script"
-  echo "2) Test adding reboot job"
-  echo "3) Install reboot job"
-  echo "4) Remove reboot job"
+  echo "2) Test reboot script"
+  echo "3) Test adding reboot job"
+  echo "4) Install reboot job"
+  echo "5) Remove reboot job"
   echo ""
 
-  
-
-  if scriptExists; then
-    echo -e "                   ${greenText}Script: created${resetText}"
-  else
+  # shows user if script is created when starting script
+  if scriptExists; then # exists
+    echo -e "                   ${greenText}Script: found${resetText}"
+  else # NOT exists
     echo -e "                   ${redText}Script: not found${resetText}"
   fi
 
-  read -p "Option: " optionInput
-
-  case "$optionInput" in
-    [1])
-      echo "1"
-      ;;
-    [2])
-      echo "2"
-      ;;
-    [3])
-      echo "3"
-      ;;
-    [4])
-      echo "4"
-      ;;
-  esac
 }
 
 startMenu
