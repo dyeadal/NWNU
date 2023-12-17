@@ -3,6 +3,10 @@
 # variable for BASH script file name
 scriptFile="weekly_reboot.sh"
 
+resetText='\033[0m'
+greenText='\033[0;32m'
+redText='\033[0;31m'
+
 # function to prompt admin if they want to test reboot script before moving file to cron directory
 testScript() {
   # prompt to test reboot script
@@ -71,6 +75,9 @@ scriptExists(){
 }
 
 startMenu(){
+  echo -e "${greenText}      New Week, New Uptime (NWNU)${resetText}"
+  echo "Schedule Weekly Reboot cron jobs easily"
+  echo ""
   echo ""
   echo "1) Create reboot script"
   echo "2) Test adding reboot job"
@@ -81,9 +88,9 @@ startMenu(){
   
 
   if scriptExists; then
-    echo "Script: created"
+    echo -e "${greenText}Script: created${resetText}"
   else
-    echo "Script: not found"
+    echo -e "${redText}Script: not found${resetText}"
   fi
 }
 
